@@ -32,6 +32,14 @@ typedef void (^IGDeferredCallback)(id obj);
 @property (nonatomic, copy, readonly) IGDeferred* (^fail)(IGDeferredCallback block);
 @property (nonatomic, copy, readonly) IGDeferred* (^then)(IGDeferredCallback resolvedBlock, IGDeferredCallback rejectedBlock, IGDeferredCallback progressBlock);
 
+/**
+ Create a new deferred object.
+ */
++(instancetype) deferred;
+
+/**
+ Create a new deferred object running specific block, and will invoke callback queues, and relay the success or failure upon block completions.
+ */
 +(instancetype) deferredWithBlock:(IGDeferredBlock)deferredBlock usingQueue:(NSOperationQueue*)queue;
 
 /**

@@ -33,6 +33,10 @@
     return self;
 }
 
++(instancetype) deferred {
+    return [[self alloc] init];
+}
+
 +(instancetype) deferredWithBlock:(IGDeferredBlock)deferredBlock usingQueue:(NSOperationQueue*)queue {
     IGDeferred* deferred = [[self alloc] init];
     NSBlockOperation* op = [NSBlockOperation blockOperationWithBlock:^{
