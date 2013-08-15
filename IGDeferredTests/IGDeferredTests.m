@@ -44,9 +44,9 @@ BOOL WaitFor(BOOL (^block)(void))
     deferred.done(^(id obj){
         callback1 = YES;
     });
-    deferred.done(^(id obj){
+    deferred.then(^(id obj){
         callback2 = YES;
-    });
+    }, nil, nil);
     
     WaitFor(^{ return (BOOL) (callback1 == YES && callback2 == YES); });
 }
@@ -62,7 +62,7 @@ BOOL WaitFor(BOOL (^block)(void))
     deferred.fail(^(id obj){
         callback1 = YES;
     });
-    deferred.fail(^(id obj){
+    deferred.then(nil, nil, ^(id obj){
         callback2 = YES;
     });
     
