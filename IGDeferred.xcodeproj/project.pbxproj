@@ -23,6 +23,11 @@
 		5441289B17BCFA9500DE2958 /* IGDeferredTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5441289A17BCFA9500DE2958 /* IGDeferredTests.m */; };
 		544128A717BCFABC00DE2958 /* IGDeferred.m in Sources */ = {isa = PBXBuildFile; fileRef = 544128A617BCFABC00DE2958 /* IGDeferred.m */; };
 		544128A817BCFABC00DE2958 /* IGDeferred.m in Sources */ = {isa = PBXBuildFile; fileRef = 544128A617BCFABC00DE2958 /* IGDeferred.m */; };
+		544128AB17BD1AA000DE2958 /* IGMultiDeferred.m in Sources */ = {isa = PBXBuildFile; fileRef = 544128AA17BD1AA000DE2958 /* IGMultiDeferred.m */; };
+		544128AC17BD1AA000DE2958 /* IGMultiDeferred.m in Sources */ = {isa = PBXBuildFile; fileRef = 544128AA17BD1AA000DE2958 /* IGMultiDeferred.m */; };
+		544128AE17BD1F2900DE2958 /* IGMultiDeferredTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 544128AD17BD1F2900DE2958 /* IGMultiDeferredTests.m */; };
+		544128B117BD1FF600DE2958 /* IGTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 544128B017BD1FF600DE2958 /* IGTestHelper.m */; };
+		544128B217BD1FF600DE2958 /* IGTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 544128B017BD1FF600DE2958 /* IGTestHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,11 @@
 		5441289A17BCFA9500DE2958 /* IGDeferredTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGDeferredTests.m; sourceTree = "<group>"; };
 		544128A517BCFABC00DE2958 /* IGDeferred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGDeferred.h; path = Classes/IGDeferred.h; sourceTree = "<group>"; };
 		544128A617BCFABC00DE2958 /* IGDeferred.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGDeferred.m; path = Classes/IGDeferred.m; sourceTree = "<group>"; };
+		544128A917BD1AA000DE2958 /* IGMultiDeferred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGMultiDeferred.h; path = Classes/IGMultiDeferred.h; sourceTree = "<group>"; };
+		544128AA17BD1AA000DE2958 /* IGMultiDeferred.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGMultiDeferred.m; path = Classes/IGMultiDeferred.m; sourceTree = "<group>"; };
+		544128AD17BD1F2900DE2958 /* IGMultiDeferredTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMultiDeferredTests.m; sourceTree = "<group>"; };
+		544128AF17BD1FF600DE2958 /* IGTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTestHelper.h; sourceTree = "<group>"; };
+		544128B017BD1FF600DE2958 /* IGTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTestHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +152,10 @@
 		5441289417BCFA9500DE2958 /* IGDeferredTests */ = {
 			isa = PBXGroup;
 			children = (
+				544128AF17BD1FF600DE2958 /* IGTestHelper.h */,
+				544128B017BD1FF600DE2958 /* IGTestHelper.m */,
 				5441289A17BCFA9500DE2958 /* IGDeferredTests.m */,
+				544128AD17BD1F2900DE2958 /* IGMultiDeferredTests.m */,
 				5441289517BCFA9500DE2958 /* Supporting Files */,
 			);
 			path = IGDeferredTests;
@@ -162,6 +175,8 @@
 			children = (
 				544128A517BCFABC00DE2958 /* IGDeferred.h */,
 				544128A617BCFABC00DE2958 /* IGDeferred.m */,
+				544128A917BD1AA000DE2958 /* IGMultiDeferred.h */,
+				544128AA17BD1AA000DE2958 /* IGMultiDeferred.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -264,6 +279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				544128AB17BD1AA000DE2958 /* IGMultiDeferred.m in Sources */,
+				544128B117BD1FF600DE2958 /* IGTestHelper.m in Sources */,
 				544128A717BCFABC00DE2958 /* IGDeferred.m in Sources */,
 				5441288017BCFA9500DE2958 /* IGAppDelegate.m in Sources */,
 				5441287C17BCFA9500DE2958 /* main.m in Sources */,
@@ -275,8 +292,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				544128B217BD1FF600DE2958 /* IGTestHelper.m in Sources */,
+				544128AE17BD1F2900DE2958 /* IGMultiDeferredTests.m in Sources */,
 				544128A817BCFABC00DE2958 /* IGDeferred.m in Sources */,
 				5441289B17BCFA9500DE2958 /* IGDeferredTests.m in Sources */,
+				544128AC17BD1AA000DE2958 /* IGMultiDeferred.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

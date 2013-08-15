@@ -8,14 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "IGDeferred.h"
-
-BOOL WaitFor(BOOL (^block)(void))
-{
-    NSTimeInterval start = [[NSProcessInfo processInfo] systemUptime];
-    while(!block() && [[NSProcessInfo processInfo] systemUptime] - start <= 5)
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate: [NSDate date]];
-    return block();
-}
+#import "IGTestHelper.h"
 
 @interface IGDeferredTests : XCTestCase
 

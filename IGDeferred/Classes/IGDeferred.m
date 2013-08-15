@@ -9,7 +9,9 @@
 #import "IGDeferred.h"
 
 @interface IGDeferred ()
-
+@property (nonatomic, assign, getter = isRunning) BOOL running;
+@property (nonatomic, assign, getter = isResolved) BOOL resolved;
+@property (nonatomic, assign, getter = isRejected) BOOL rejected;
 @property (nonatomic, strong) NSMutableArray* progressQueues;
 @property (nonatomic, strong) NSMutableArray* alwaysQueues;
 @property (nonatomic, strong) NSMutableArray* doneQueues;
@@ -22,6 +24,7 @@
 -(id) init {
     self = [super init];
     if (self) {
+        self.running = YES;
         self.progressQueues = [NSMutableArray array];
         self.alwaysQueues = [NSMutableArray array];
         self.doneQueues = [NSMutableArray array];
@@ -35,14 +38,16 @@
 -(IGDeferred* (^)(id obj)) reject
 {
     return ^IGDeferred* (id obj) {
-        _rejected = YES;
+        self.rejected = YES;
+        self.running = NO;
+        self.value = obj;
         
         [[self.failQueues copy] enumerateObjectsUsingBlock:^(IGDeferredCallback block, NSUInteger idx, BOOL *stop) {
-            block(obj);
+            block(self.value);
         }];
         
         [[self.alwaysQueues copy] enumerateObjectsUsingBlock:^(IGDeferredCallback block, NSUInteger idx, BOOL *stop) {
-            block(obj);
+            block(self.value);
         }];
         
         return self;
@@ -52,7 +57,9 @@
 -(IGDeferred* (^)(id obj)) resolve
 {
     return ^IGDeferred* (id obj) {
-        _resolved = YES;
+        self.resolved = YES;
+        self.running = NO;
+        self.value = obj;
         
         [[self.doneQueues copy] enumerateObjectsUsingBlock:^(IGDeferredCallback block, NSUInteger idx, BOOL *stop) {
             block(obj);
@@ -126,31 +133,6 @@
 
         return self;
     };
-}
-
-#pragma mark - 
-
--(BOOL) isRunning
-{
-    return !_resolved && !_rejected;
-}
-
--(void) setResolved:(BOOL)resolved
-{
-    [self willChangeValueForKey:@"resolved"];
-    [self willChangeValueForKey:@"running"];
-    _resolved = resolved;
-    [self didChangeValueForKey:@"running"];
-    [self didChangeValueForKey:@"resolved"];
-}
-
--(void) setRejected:(BOOL)rejected
-{
-    [self willChangeValueForKey:@"rejected"];
-    [self willChangeValueForKey:@"running"];
-    _rejected = rejected;
-    [self didChangeValueForKey:@"running"];
-    [self didChangeValueForKey:@"rejected"];
 }
 
 @end
