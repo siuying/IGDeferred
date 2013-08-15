@@ -22,11 +22,15 @@ typedef void (^IGDeferredCallback)(id obj);
 @property (nonatomic, assign, readonly, getter = isRejected) BOOL rejected;
 @property (nonatomic, strong) id value;
 
-@property (nonatomic, readonly) IGDeferred* (^reject)(id obj);
-@property (nonatomic, readonly) IGDeferred* (^resolve)(id obj);
-@property (nonatomic, readonly) IGDeferred* (^always)(IGDeferredCallback block);
-@property (nonatomic, readonly) IGDeferred* (^done)(IGDeferredCallback block);
-@property (nonatomic, readonly) IGDeferred* (^fail)(IGDeferredCallback block);
+@property (nonatomic, copy, readonly) IGDeferred* (^reject)(id obj);
+@property (nonatomic, copy, readonly) IGDeferred* (^resolve)(id obj);
+@property (nonatomic, copy, readonly) IGDeferred* (^notifyWith)(id obj);
+
+@property (nonatomic, copy, readonly) IGDeferred* (^progress)(IGDeferredCallback block);
+@property (nonatomic, copy, readonly) IGDeferred* (^always)(IGDeferredCallback block);
+@property (nonatomic, copy, readonly) IGDeferred* (^done)(IGDeferredCallback block);
+@property (nonatomic, copy, readonly) IGDeferred* (^fail)(IGDeferredCallback block);
+@property (nonatomic, copy, readonly) IGDeferred* (^then)(IGDeferredCallback resolvedBlock, IGDeferredCallback rejectedBlock, IGDeferredCallback progressBlock);
 
 /**
   Reject a Deferred object and call any failCallbacks with the given argument.

@@ -9,11 +9,13 @@
 #import "IGDeferred.h"
 
 @interface IGDeferred ()
+
 @property (nonatomic, strong) NSArray* deferredBlocks;
 @property (nonatomic, strong) NSMutableArray* progressQueues;
 @property (nonatomic, strong) NSMutableArray* alwaysQueues;
 @property (nonatomic, strong) NSMutableArray* doneQueues;
 @property (nonatomic, strong) NSMutableArray* failQueues;
+
 @end
 
 @implementation IGDeferred

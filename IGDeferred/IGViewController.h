@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IGDeferred.h"
 
 @interface IGViewController : UIViewController
+
+@property (nonatomic, strong) IGDeferred* deferred;
 
 @end
