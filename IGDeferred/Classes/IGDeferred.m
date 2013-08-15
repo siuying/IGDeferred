@@ -21,7 +21,7 @@
 
 @implementation IGDeferred
 
--(id) init {
+-(instancetype) init {
     self = [super init];
     if (self) {
         self.running = YES;
@@ -31,6 +31,21 @@
         self.failQueues = [NSMutableArray array];
     }
     return self;
+}
+
++(instancetype) deferredWithBlock:(IGDeferredBlock)deferredBlock usingQueue:(NSOperationQueue*)queue {
+    IGDeferred* deferred = [[self alloc] init];
+    NSBlockOperation* op = [NSBlockOperation blockOperationWithBlock:^{
+        BOOL succeed;
+        id value = deferredBlock(&succeed);
+        if (succeed) {
+            deferred.resolve(value);
+        } else {
+            deferred.reject(value);
+        }
+    }];
+    [queue addOperation:op];
+    return deferred;
 }
 
 #pragma mark - Chainable methods

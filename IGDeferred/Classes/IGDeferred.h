@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^IGDeferredBlock)(void);
+typedef id (^IGDeferredBlock)(BOOL* succeed);
 typedef void (^IGDeferredCallback)(id obj);
 
 /**
@@ -31,6 +31,8 @@ typedef void (^IGDeferredCallback)(id obj);
 @property (nonatomic, copy, readonly) IGDeferred* (^done)(IGDeferredCallback block);
 @property (nonatomic, copy, readonly) IGDeferred* (^fail)(IGDeferredCallback block);
 @property (nonatomic, copy, readonly) IGDeferred* (^then)(IGDeferredCallback resolvedBlock, IGDeferredCallback rejectedBlock, IGDeferredCallback progressBlock);
+
++(instancetype) deferredWithBlock:(IGDeferredBlock)deferredBlock usingQueue:(NSOperationQueue*)queue;
 
 /**
   Reject a Deferred object and call any failCallbacks with the given argument.

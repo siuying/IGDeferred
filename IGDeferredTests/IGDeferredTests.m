@@ -81,6 +81,21 @@
     WaitFor(^{ return (BOOL) (callback1 == YES && callback2 == YES && callback3 == YES); });
 }
 
+- (void)testDeferredWithBlock
+{
+    __block BOOL callback1 = NO;
+    [IGDeferred deferredWithBlock:^id(BOOL *succeed) {
+        *succeed = YES;
+        [NSThread sleepForTimeInterval:0.5];
+        return nil;
+    } usingQueue:[NSOperationQueue mainQueue]].done(^(id o){
+        callback1 = YES;
+    });
+    WaitFor(^{ return (BOOL) (callback1 == YES); });
+}
+
+#pragma mark -
+
 -(void) completed:(IGDeferred*)deferred
 {
     deferred.resolve(self);
