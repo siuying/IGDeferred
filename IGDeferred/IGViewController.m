@@ -23,11 +23,20 @@
     double delayInSeconds = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        self.deferred.notifyWith(@1);
         self.deferred.resolve(nil);
     });
 
     self.deferred.done(^(id obj){
         NSLog(@"done");
+    });
+    
+    self.deferred.fail(^(id obj){
+        NSLog(@"fail");
+    });
+    
+    self.deferred.progress(^(id obj){
+        NSLog(@"progress");
     });
 }
 

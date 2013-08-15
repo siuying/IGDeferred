@@ -40,7 +40,7 @@ typedef void (^IGDeferredCallback)(id obj);
 /**
 Resolve a Deferred object and call any doneCallbacks with the given argument.
  */
--(IGDeferred* (^)(id obj)) resolved;
+-(IGDeferred* (^)(id obj)) resolve;
 
 /**
  Call the progressCallbacks on a Deferred object with the given argument.
