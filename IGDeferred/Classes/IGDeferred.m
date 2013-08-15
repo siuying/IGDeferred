@@ -34,11 +34,6 @@
 
 -(IGDeferred* (^)(id obj)) reject
 {
-    if (!self.isRunning) {
-        [NSException raise:@"IGDeferredException"
-                    format:@"Deferred is not running, you can only reject or resolve a Deferred object once."];
-    }
-    
     return ^IGDeferred* (id obj) {
         _rejected = YES;
         
@@ -56,11 +51,6 @@
 
 -(IGDeferred* (^)(id obj)) resolve
 {
-    if (!self.isRunning) {
-        [NSException raise:@"IGDeferredException"
-                    format:@"Deferred is not running, you can only reject or resolve a Deferred object once."];
-    }
-
     return ^IGDeferred* (id obj) {
         _resolved = YES;
         
