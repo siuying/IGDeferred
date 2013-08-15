@@ -135,4 +135,22 @@
     return !_resolved && !_rejected;
 }
 
+-(void) setResolved:(BOOL)resolved
+{
+    [self willChangeValueForKey:@"resolved"];
+    [self willChangeValueForKey:@"running"];
+    _resolved = resolved;
+    [self didChangeValueForKey:@"running"];
+    [self didChangeValueForKey:@"resolved"];
+}
+
+-(void) setRejected:(BOOL)rejected
+{
+    [self willChangeValueForKey:@"rejected"];
+    [self willChangeValueForKey:@"running"];
+    _rejected = rejected;
+    [self didChangeValueForKey:@"running"];
+    [self didChangeValueForKey:@"rejected"];
+}
+
 @end

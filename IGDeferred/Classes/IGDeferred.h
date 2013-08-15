@@ -20,7 +20,6 @@ typedef void (^IGDeferredCallback)(id obj);
 @property (nonatomic, assign, readonly, getter = isRunning) BOOL running;
 @property (nonatomic, assign, readonly, getter = isResolved) BOOL resolved;
 @property (nonatomic, assign, readonly, getter = isRejected) BOOL rejected;
-@property (nonatomic, strong) id value;
 
 @property (nonatomic, copy, readonly) IGDeferred* (^reject)(id obj);
 @property (nonatomic, copy, readonly) IGDeferred* (^resolve)(id obj);
