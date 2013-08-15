@@ -38,17 +38,29 @@ BOOL WaitFor(BOOL (^block)(void))
     __block IGDeferred* deferred = [[IGDeferred alloc] init];
     __block BOOL callback1 = NO;
     __block BOOL callback2 = NO;
-    
-    [self performSelector:@selector(completed:) withObject:deferred afterDelay:2.0];
+    __block BOOL callback3 = NO;
+    __block BOOL callbackNofity = NO;
 
+    XCTAssert([deferred isRunning], @"should be running");
+    [self performSelector:@selector(completed:) withObject:deferred afterDelay:1.0];
+    [self performSelector:@selector(notify:) withObject:deferred afterDelay:0.2];
+
+    deferred.progress(^(id obj){
+        callbackNofity = YES;
+    });
     deferred.done(^(id obj){
         callback1 = YES;
     });
     deferred.then(^(id obj){
         callback2 = YES;
     }, nil, nil);
-    
-    WaitFor(^{ return (BOOL) (callback1 == YES && callback2 == YES); });
+    deferred.always(^(id obj){
+        callback3 = YES;
+        XCTAssert(![deferred isRunning], @"should not be running");
+        XCTAssert([deferred isResolved], @"should be resolved");
+    });
+
+    WaitFor(^{ return (BOOL) (callback1 == YES && callback2 == YES && callback3 == YES); });
 }
 
 - (void)testFailCallback
@@ -56,17 +68,24 @@ BOOL WaitFor(BOOL (^block)(void))
     IGDeferred* deferred = [[IGDeferred alloc] init];
     __block BOOL callback1 = NO;
     __block BOOL callback2 = NO;
-    
-    [self performSelector:@selector(failure:) withObject:deferred afterDelay:2.0];
-    
+    __block BOOL callback3 = NO;
+
+    XCTAssert([deferred isRunning], @"should be running");
+    [self performSelector:@selector(failure:) withObject:deferred afterDelay:1.0];
+
     deferred.fail(^(id obj){
         callback1 = YES;
     });
     deferred.then(nil, nil, ^(id obj){
         callback2 = YES;
     });
-    
-    WaitFor(^{ return (BOOL) (callback1 == YES && callback2 == YES); });
+    deferred.always(^(id obj){
+        callback3 = YES;
+        XCTAssert(![deferred isRunning], @"should not be running");
+        XCTAssert([deferred isRejected], @"should be rejected");
+    });
+
+    WaitFor(^{ return (BOOL) (callback1 == YES && callback2 == YES && callback3 == YES); });
 }
 
 -(void) completed:(IGDeferred*)deferred
@@ -78,4 +97,10 @@ BOOL WaitFor(BOOL (^block)(void))
 {
     deferred.reject(self);
 }
+
+-(void) notify:(IGDeferred*)deferred
+{
+    deferred.notifyWith(@1);
+}
+
 @end
