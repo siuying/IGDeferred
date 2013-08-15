@@ -21,6 +21,8 @@
 		5441289117BCFA9500DE2958 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5441287317BCFA9500DE2958 /* UIKit.framework */; };
 		5441289917BCFA9500DE2958 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5441289717BCFA9500DE2958 /* InfoPlist.strings */; };
 		5441289B17BCFA9500DE2958 /* IGDeferredTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5441289A17BCFA9500DE2958 /* IGDeferredTests.m */; };
+		544128A717BCFABC00DE2958 /* IGDeferred.m in Sources */ = {isa = PBXBuildFile; fileRef = 544128A617BCFABC00DE2958 /* IGDeferred.m */; };
+		544128A817BCFABC00DE2958 /* IGDeferred.m in Sources */ = {isa = PBXBuildFile; fileRef = 544128A617BCFABC00DE2958 /* IGDeferred.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		5441289617BCFA9500DE2958 /* IGDeferredTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IGDeferredTests-Info.plist"; sourceTree = "<group>"; };
 		5441289817BCFA9500DE2958 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5441289A17BCFA9500DE2958 /* IGDeferredTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGDeferredTests.m; sourceTree = "<group>"; };
+		544128A517BCFABC00DE2958 /* IGDeferred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGDeferred.h; path = Classes/IGDeferred.h; sourceTree = "<group>"; };
+		544128A617BCFABC00DE2958 /* IGDeferred.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGDeferred.m; path = Classes/IGDeferred.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 		5441287517BCFA9500DE2958 /* IGDeferred */ = {
 			isa = PBXGroup;
 			children = (
+				544128A417BCFAAB00DE2958 /* Classes */,
 				5441287E17BCFA9500DE2958 /* IGAppDelegate.h */,
 				5441287F17BCFA9500DE2958 /* IGAppDelegate.m */,
 				5441288117BCFA9500DE2958 /* Main.storyboard */,
@@ -150,6 +155,15 @@
 				5441289717BCFA9500DE2958 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		544128A417BCFAAB00DE2958 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				544128A517BCFABC00DE2958 /* IGDeferred.h */,
+				544128A617BCFABC00DE2958 /* IGDeferred.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				544128A717BCFABC00DE2958 /* IGDeferred.m in Sources */,
 				5441288017BCFA9500DE2958 /* IGAppDelegate.m in Sources */,
 				5441287C17BCFA9500DE2958 /* main.m in Sources */,
 				5441288617BCFA9500DE2958 /* IGViewController.m in Sources */,
@@ -260,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				544128A817BCFABC00DE2958 /* IGDeferred.m in Sources */,
 				5441289B17BCFA9500DE2958 /* IGDeferredTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
